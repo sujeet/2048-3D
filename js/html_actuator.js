@@ -14,10 +14,12 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
     self.clearContainer(self.tileContainer);
 
     grid.cells.forEach(function (column) {
-      column.forEach(function (cell) {
-        if (cell) {
-          self.addTile(cell);
-        }
+      column.forEach(function (column3d) {
+	    column3d.forEach(function (cell) {
+          if (cell) {
+            self.addTile(cell);
+          }
+		});
       });
     });
 
@@ -43,7 +45,8 @@ HTMLActuator.prototype.addTile = function (tile) {
   var self = this;
 
   var element   = document.createElement("div");
-  var position  = tile.previousPosition || { x: tile.x, y: tile.y };
+  // TODO using only 2 of 3 coordinates
+  var position  = tile.previousPosition || { x: tile.x, y: tile.y, z: tile.z};
   positionClass = this.positionClass(position);
 
   // We can't use classlist because it somehow glitches when replacing classes
@@ -55,7 +58,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   if (tile.previousPosition) {
     // Make sure that the tile gets rendered in the previous position first
     window.requestAnimationFrame(function () {
-      classes[2] = self.positionClass({ x: tile.x, y: tile.y });
+      classes[2] = self.positionClass({ x: tile.x, y: tile.y, z: tile.z });
       self.applyClasses(element, classes); // Update the position
     });
   } else if (tile.mergedFrom) {
@@ -80,12 +83,12 @@ HTMLActuator.prototype.applyClasses = function (element, classes) {
 };
 
 HTMLActuator.prototype.normalizePosition = function (position) {
-  return { x: position.x + 1, y: position.y + 1 };
+  return { x: position.x + 1, y: position.y + 1, z: position.z + 1 };
 };
 
 HTMLActuator.prototype.positionClass = function (position) {
   position = this.normalizePosition(position);
-  return "tile-position-" + position.x + "-" + position.y;
+  return "tile-position-" + position.x + "-" + position.y + "-" + position.z;
 };
 
 HTMLActuator.prototype.updateScore = function (score) {

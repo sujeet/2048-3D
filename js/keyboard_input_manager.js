@@ -24,28 +24,31 @@ KeyboardInputManager.prototype.listen = function () {
   var self = this;
 
   var map = {
-    38: 0, // Up
-    39: 1, // Right
-    40: 2, // Down
-    37: 3, // Left
-    75: 0, // vim keybindings
-    76: 1,
-    74: 2,
-    72: 3,
-    87: 0, // W
-    68: 1, // D
-    83: 2, // S
-    65: 3  // A
+    38:  0, // Up
+    39:  1, // Right
+    40:  2, // Down
+    37:  3, // Left
+	107: 4, // Front
+	109: 5, // Back
+    75:  0, // vim keybindings
+    76:  1,
+    74:  2,
+    72:  3,
+    87:  0, // W
+    68:  1, // D
+    83:  2, // S
+    65:  3  // A
   };
 
   document.addEventListener("keydown", function (event) {
     var modifiers = event.altKey || event.ctrlKey || event.metaKey ||
                     event.shiftKey;
     var mapped    = map[event.which];
-
+	console.log(event.which);
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
+		console.log("incepted");
         self.emit("move", mapped);
       }
 
