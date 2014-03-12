@@ -203,7 +203,6 @@ GameManager.prototype.movesAvailable = function () {
 };
 
 // Check for available matches between tiles (more expensive check)
-// TODO add 3D
 GameManager.prototype.tileMatchesAvailable = function () {
   var self = this;
 
