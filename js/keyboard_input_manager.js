@@ -50,7 +50,6 @@ KeyboardInputManager.prototype.listen = function () {
     if (!modifiers) {
       if (mapped !== undefined) {
         event.preventDefault();
-		console.log("incepted");
         self.emit("move", mapped);
       }
 
