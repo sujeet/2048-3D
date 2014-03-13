@@ -138,7 +138,9 @@ GameManager.prototype.move = function (direction) {
   });
 
   if (moved) {
+  	var value = Math.random() < 0.7 ? false : true;
     this.addRandomTile();
+	if (value) this.addRandomTile();
 
     if (!this.movesAvailable()) {
       this.over = true; // Game over!
