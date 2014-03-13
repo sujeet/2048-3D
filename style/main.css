@@ -199,10 +199,10 @@ hr {
   position: absolute;
   z-index: 1; }
 
-.level2 {
+.grid-container.level2 {
   left: 395px; }
 
-.level3 {
+.grid-container.level3 {
   left: 775px; }
 
 .grid-row {
