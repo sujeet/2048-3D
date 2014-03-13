@@ -501,7 +501,7 @@ hr {
 
 .game-explanation {
   margin-top: 50px; }
-
+/*
 @media screen and (max-width: 480px) {
   html, body {
     font-size: 15px; }
@@ -688,4 +688,4 @@ hr {
     line-height: 30px !important;
     margin-top: 90px !important; }
   .game-message .lower {
-    margin-top: 30px !important; } }
+    margin-top: 30px !important; } }*/
