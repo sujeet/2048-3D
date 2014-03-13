@@ -28,8 +28,8 @@ KeyboardInputManager.prototype.listen = function () {
     39:  1, // Right
     40:  2, // Down
     37:  3, // Left
-	107: 4, // Front
-	109: 5, // Back
+	109: 4, // Minus
+	107: 5, // Plus
     75:  0, // vim keybindings
     76:  1,
     74:  2,
@@ -37,7 +37,9 @@ KeyboardInputManager.prototype.listen = function () {
     87:  0, // W
     68:  1, // D
     83:  2, // S
-    65:  3  // A
+    65:  3, // A
+    81:  4, // Q
+	69:  5  // E
   };
 
   document.addEventListener("keydown", function (event) {
