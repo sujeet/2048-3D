@@ -1,5 +1,10 @@
 function HTMLActuator() {
-  this.tileContainer    = document.querySelector(".tile-container");
+  this.tileContainer1   = document.querySelector(".tile-container-level1");
+  this.tileContainer2   = document.querySelector(".tile-container-level2");
+  this.tileContainer3   = document.querySelector(".tile-container-level3");
+  this.tileContainers   = [this.tileContainer1,
+                           this.tileContainer2,
+                           this.tileContainer3];
   this.scoreContainer   = document.querySelector(".score-container");
   this.bestContainer    = document.querySelector(".best-container");
   this.messageContainer = document.querySelector(".game-message");
@@ -11,7 +16,9 @@ HTMLActuator.prototype.actuate = function (grid, metadata) {
   var self = this;
 
   window.requestAnimationFrame(function () {
-    self.clearContainer(self.tileContainer);
+    self.clearContainer(self.tileContainer1);
+    self.clearContainer(self.tileContainer2);
+    self.clearContainer(self.tileContainer3);
 
     grid.cells.forEach(function (column) {
       column.forEach(function (column3d) {
@@ -75,7 +82,7 @@ HTMLActuator.prototype.addTile = function (tile) {
   }
 
   // Put the tile on the board
-  this.tileContainer.appendChild(element);
+  this.tileContainers[tile.z].appendChild(element);
 };
 
 HTMLActuator.prototype.applyClasses = function (element, classes) {
@@ -88,7 +95,7 @@ HTMLActuator.prototype.normalizePosition = function (position) {
 
 HTMLActuator.prototype.positionClass = function (position) {
   position = this.normalizePosition(position);
-  return "tile-position-" + position.x + "-" + position.y + "-" + position.z;
+  return "tile-position-" + position.x + "-" + position.y;
 };
 
 HTMLActuator.prototype.updateScore = function (score) {
