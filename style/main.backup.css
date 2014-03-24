@@ -562,7 +562,7 @@ hr {
       .game-message.game-won {
         background: rgba(237, 194, 46, 0.5);
         color: #f9f6f2; }
-      .game-message.game-won .game-message.game-over {
+      .game-message.game-won, .game-message.game-over {
         display: block; }
 
   .grid-container {
