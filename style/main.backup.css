@@ -477,6 +477,21 @@ hr {
   .heading {
     margin-bottom: 10px; }
 
+  .viewport {
+    perspective: 1000px;
+    perspective-origin: 225% -50%; }
+
+  .shadow {
+    width: 130px;
+    height: 130px; }
+
+  .game-container-level2 {
+    z-index: 5000;
+    transform: rotateX(90deg) translatez(135px); }
+
+  .game-container-level3 {
+    transform: rotateX(90deg) translateZ(255px); }
+
   .game-container {
     margin-top: 40px;
     position: relative;
@@ -487,8 +502,8 @@ hr {
     -moz-user-select: none;
     background: #bbada0;
     border-radius: 6px;
-    width: 280px;
-    height: 280px;
+    width: 210px;
+    height: 210px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
