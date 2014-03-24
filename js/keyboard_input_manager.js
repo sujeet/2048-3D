@@ -4,6 +4,30 @@ function KeyboardInputManager() {
   this.listen();
 }
 
+/*
+   +-------------> x
+   |
+   |
+   |
+   |
+   |
+   v
+
+   y
+
+         -PI/2
+           |
+           |
+ PI  ------+------ 0
+           |
+           |
+         +PI/2
+
+*/
+function getSwipeAngle (dy, dx) {
+  
+}
+
 KeyboardInputManager.prototype.on = function (event, callback) {
   if (!this.events[event]) {
     this.events[event] = [];
@@ -62,7 +86,7 @@ KeyboardInputManager.prototype.listen = function () {
 
   // Listen to swipe events
   var touchStartClientX, touchStartClientY;
-  var gameContainer = document.getElementsByClassName("game-container")[0];
+  var gameContainer = document.getElementsByClassName("viewport")[0];
 
   gameContainer.addEventListener("touchstart", function (event) {
     if (event.touches.length > 1) return;
@@ -84,10 +108,29 @@ KeyboardInputManager.prototype.listen = function () {
 
     var dy = event.changedTouches[0].clientY - touchStartClientY;
     var absDy = Math.abs(dy);
+                                   
 
     if (Math.max(absDx, absDy) > 10) {
-      // (right : left) : (down : up)
-      self.emit("move", absDx > absDy ? (dx > 0 ? 1 : 3) : (dy > 0 ? 2 : 0));
+      var angle = Math.atan2 (dy, dx);
+      var p = Math.PI / 8;
+      if ((-3*p <= angle) && (angle <= -p)) {
+        self.emit("move", 0); // up
+      }
+      else if ((-p < angle) && (angle <= 2*p)) {
+        self.emit("move", 1); // right
+      }
+      else if ((2*p < angle) && (angle < 5*p)) {
+        self.emit("move", 5); // plus
+      }
+      else if ((5*p <= angle) && (angle <= 7*p)) {
+        self.emit("move", 2); // down
+      }
+      else if ((7*p < angle) || (angle < -6*p)) {
+        self.emit("move", 3); // left
+      }
+      else if ((-6*p <= angle) && (angle < -3*p)) {
+        self.emit("move", 4); // minus
+      }
     }
   });
 };
