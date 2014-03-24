@@ -122,7 +122,8 @@ KeyboardInputManager.prototype.listen = function () {
   gameContainer.addEventListener("mousedown", function (event) {
     touchStartClientX = event.clientX;
     touchStartClientY = event.clientY;
-    gameContainer.style.cursor = "grabbing";
+    gameContainer.classList.remove ("grab");
+    gameContainer.classList.add ("grabbing");
     event.preventDefault();
   });
 
@@ -152,7 +153,8 @@ KeyboardInputManager.prototype.listen = function () {
     var dy = event.clientY - touchStartClientY;
     var absDy = Math.abs(dy);
                                    
-    gameContainer.style.cursor = "grab";
+    gameContainer.classList.remove ("grabbing");
+    gameContainer.classList.add ("grab");
 
     if (Math.max(absDx, absDy) > 10) {
       self.emit ("move", getDirection (dy, dx));

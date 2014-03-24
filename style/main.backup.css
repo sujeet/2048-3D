@@ -22,6 +22,14 @@ h1.title {
   display: block;
   float: left; }
 
+.grab {
+  cursor: grab;
+  cursor: -webkit-grab; }
+
+.grabbing {
+  cursor: grabbing;
+  cursor: -webkit-grabbing; }
+
 @-webkit-keyframes move-up {
   0% {
     top: 25px;
@@ -178,7 +186,7 @@ hr {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
-  .game-container .game-message {
+  .game-message {
     display: none;
     position: absolute;
     top: 0;
@@ -186,22 +194,22 @@ hr {
     bottom: 0;
     left: 0;
     background: rgba(238, 228, 218, 0.5);
-    z-index: 100;
+    z-index: 12000;
     text-align: center;
     -webkit-animation: fade-in 800ms ease 1200ms;
     -moz-animation: fade-in 800ms ease 1200ms;
     -webkit-animation-fill-mode: both;
     -moz-animation-fill-mode: both; }
-    .game-container .game-message p {
+    .game-message p {
       font-size: 60px;
       font-weight: bold;
       height: 60px;
       line-height: 60px;
       margin-top: 222px; }
-    .game-container .game-message .lower {
+    .game-message .lower {
       display: block;
       margin-top: 59px; }
-    .game-container .game-message a {
+    .game-message a {
       display: inline-block;
       background: #8f7a66;
       border-radius: 3px;
@@ -211,10 +219,10 @@ hr {
       height: 40px;
       line-height: 42px;
       margin-left: 9px; }
-    .game-container .game-message.game-won {
+    .game-message.game-won {
       background: rgba(237, 194, 46, 0.5);
       color: #f9f6f2; }
-    .game-container .game-message.game-won, .game-container .game-message.game-over {
+    .game-message.game-won, .game-container .game-message.game-over {
       display: block; }
 
 .grid-container {
@@ -518,7 +526,7 @@ hr {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box; }
-    .game-container .game-message {
+    .game-message {
       display: none;
       position: absolute;
       top: 0;
@@ -526,22 +534,22 @@ hr {
       bottom: 0;
       left: 0;
       background: rgba(238, 228, 218, 0.5);
-      z-index: 100;
+      z-index: 12000;
       text-align: center;
       -webkit-animation: fade-in 800ms ease 1200ms;
       -moz-animation: fade-in 800ms ease 1200ms;
       -webkit-animation-fill-mode: both;
       -moz-animation-fill-mode: both; }
-      .game-container .game-message p {
+      .game-message p {
         font-size: 60px;
         font-weight: bold;
         height: 60px;
         line-height: 60px;
         margin-top: 222px; }
-      .game-container .game-message .lower {
+      .game-message .lower {
         display: block;
         margin-top: 59px; }
-      .game-container .game-message a {
+      .game-message a {
         display: inline-block;
         background: #8f7a66;
         border-radius: 3px;
@@ -551,10 +559,10 @@ hr {
         height: 40px;
         line-height: 42px;
         margin-left: 9px; }
-      .game-container .game-message.game-won {
+      .game-message.game-won {
         background: rgba(237, 194, 46, 0.5);
         color: #f9f6f2; }
-      .game-container .game-message.game-won, .game-container .game-message.game-over {
+      .game-message.game-won, .game-container .game-message.game-over {
         display: block; }
 
   .grid-container {
