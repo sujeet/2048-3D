@@ -143,18 +143,23 @@ hr {
 
 .viewport {
   perspective: 1400px;
-  perspective-origin: 120% -30%; }
+  -webkit-perspective: 1400px;
+  perspective-origin: 120% -30%;
+  -webkit-perspective-origin: 120% -30%; }
 
 .game-container-level1 {
   z-index: 10000;
-  transform: rotateX(90deg); }
+  transform: rotateX(90deg);
+  -webkit-transform: rotateX(90deg); }
 
 .game-container-level2 {
   z-index: 5000;
-  transform: rotateX(90deg) translateZ(230px); }
+  transform: rotateX(90deg) translateZ(230px);
+  -webkit-transform: rotateX(90deg) translateZ(230px); }
 
 .game-container-level3 {
-  transform: rotateX(90deg) translateZ(420px); }
+  transform: rotateX(90deg) translateZ(420px);
+  -webkit-transform: rotateX(90deg) translateZ(420px); }
 
 .game-container {
   margin-top: 40px;
@@ -214,9 +219,6 @@ hr {
 .grid-container {
   position: absolute;
   z-index: 1; }
-
-.push-up {
-  transform: rotateX(90px) translateZ(-100px); }
 
 .grid-row {
   margin-bottom: 15px; }
@@ -479,7 +481,9 @@ hr {
 
   .viewport {
     perspective: 1000px;
-    perspective-origin: 225% -50%; }
+    -webkit-perspective: 1000px;
+    perspective-origin: 225% -50%;
+    -webkit-perspective-origin: 225% -50%; }
 
   .shadow {
     width: 130px;
@@ -487,10 +491,12 @@ hr {
 
   .game-container-level2 {
     z-index: 5000;
-    transform: rotateX(90deg) translatez(135px); }
+    transform: rotateX(90deg) translatez(135px);
+    -webkit-transform: rotateX(90deg) translatez(135px); }
 
   .game-container-level3 {
-    transform: rotateX(90deg) translateZ(255px); }
+    transform: rotateX(90deg) translateZ(255px);
+    -webkit-transform: rotateX(90deg) translateZ(255px); }
 
   .game-container {
     margin-top: 40px;
