@@ -8,7 +8,7 @@ html, body {
   font-size: 18px; }
 
 body {
-  margin: 80px 0; }
+  margin: 20px 0; }
 
 .heading:after {
   content: "";
@@ -142,6 +142,8 @@ hr {
     opacity: 1; } }
 
 .viewport {
+  margin-top: -90px;
+  cursor: grab;
   perspective: 1400px;
   -webkit-perspective: 1400px;
   perspective-origin: 120% -30%;
@@ -166,7 +168,6 @@ hr {
   margin: auto;
   position: relative;
   padding: 15px;
-  cursor: default;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -moz-user-select: none;
@@ -453,11 +454,14 @@ hr {
   margin-bottom: 0; }
 
 .game-explanation {
-  margin-top: 50px; }
+  margin-top: -400px; }
 
 @media screen and (max-width: 480px) {
   html, body {
     font-size: 15px; }
+
+  .game-explanation {
+    margin-top: -250px; }
 
   body {
     margin: 20px 0;
@@ -480,6 +484,8 @@ hr {
     margin-bottom: 10px; }
 
   .viewport {
+    margin-top: -70px;
+    cursor: grab;
     perspective: 1000px;
     -webkit-perspective: 1000px;
     perspective-origin: 225% -50%;
@@ -502,7 +508,6 @@ hr {
     margin-top: 40px;
     position: relative;
     padding: 10px;
-    cursor: default;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -moz-user-select: none;

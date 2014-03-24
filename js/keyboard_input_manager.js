@@ -4,6 +4,29 @@ function KeyboardInputManager() {
   this.listen();
 }
 
+function getDirection (dy, dx) {
+  var angle = Math.atan2 (dy, dx);
+  var p = Math.PI / 8;
+  if ((-3*p <= angle) && (angle <= -p)) {
+    return 0;//up
+  }
+  else if ((-p < angle) && (angle <= 2*p)) {
+    return 1;//right
+  }
+  else if ((2*p < angle) && (angle < 5*p)) {
+    return 5;//plus
+  }
+  else if ((5*p <= angle) && (angle <= 7*p)) {
+    return 2;//down
+  }
+  else if ((7*p < angle) || (angle < -6*p)) {
+    return 3;//left
+  }
+  else {
+    return 4;//minus
+  }
+}
+
 /*
    +-------------> x
    |
@@ -96,6 +119,13 @@ KeyboardInputManager.prototype.listen = function () {
     event.preventDefault();
   });
 
+  gameContainer.addEventListener("mousedown", function (event) {
+    touchStartClientX = event.clientX;
+    touchStartClientY = event.clientY;
+    gameContainer.style.cursor = "grabbing";
+    event.preventDefault();
+  });
+
   gameContainer.addEventListener("touchmove", function (event) {
     event.preventDefault();
   });
@@ -111,26 +141,21 @@ KeyboardInputManager.prototype.listen = function () {
                                    
 
     if (Math.max(absDx, absDy) > 10) {
-      var angle = Math.atan2 (dy, dx);
-      var p = Math.PI / 8;
-      if ((-3*p <= angle) && (angle <= -p)) {
-        self.emit("move", 0); // up
-      }
-      else if ((-p < angle) && (angle <= 2*p)) {
-        self.emit("move", 1); // right
-      }
-      else if ((2*p < angle) && (angle < 5*p)) {
-        self.emit("move", 5); // plus
-      }
-      else if ((5*p <= angle) && (angle <= 7*p)) {
-        self.emit("move", 2); // down
-      }
-      else if ((7*p < angle) || (angle < -6*p)) {
-        self.emit("move", 3); // left
-      }
-      else if ((-6*p <= angle) && (angle < -3*p)) {
-        self.emit("move", 4); // minus
-      }
+      self.emit ("move", getDirection (dy, dx));
+    }
+  });
+
+  gameContainer.addEventListener("mouseup", function (event) {
+    var dx = event.clientX - touchStartClientX;
+    var absDx = Math.abs(dx);
+
+    var dy = event.clientY - touchStartClientY;
+    var absDy = Math.abs(dy);
+                                   
+    gameContainer.style.cursor = "grab";
+
+    if (Math.max(absDx, absDy) > 10) {
+      self.emit ("move", getDirection (dy, dx));
     }
   });
 };
